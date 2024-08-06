@@ -1,0 +1,15 @@
+RewriteEngine On
+
+#Habiliatar o php
+addHandler application/x-http-php55 .php
+
+<IfModule mod_security.c>
+    SecFilterEngine off
+    SecFilterScanPOST off
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php/$1 [QSA]
